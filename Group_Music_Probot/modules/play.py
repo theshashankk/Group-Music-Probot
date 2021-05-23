@@ -87,7 +87,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
                 await f.close()
 
     image1 = Image.open("./background.png")
-    image2 = Image.open("./etc/foreground.png")
+    image2 = Image.open("./etc/iphone.png")
     image3 = changeImageSize(1280, 720, image1)
     image4 = changeImageSize(1280, 720, image2)
     image5 = image3.convert("RGBA")
@@ -548,10 +548,14 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ **Playing** here the song requested by {} via Youtube Music 😜".format(
-                message.from_user.mention()
-            ),
-        )
+            caption="**𝘾𝙐𝙍𝙍𝙀𝙉𝙏𝙇𝙔 𝙋𝙇𝘼𝙔𝙄𝙉𝙂**\n\n**🏷️Song : [{song_name}]({url})**\n⏱️Duration :{song_duration}\n💡Status :`Playing🎵`\nRequested By {request_by}\nPlaying In: {chat_title}**".format(
+                song_name=title,
+                url=url,   
+                song_duration=duration,
+                request_by=message.from_user.mention, 
+                chat_title=chat.title,   
+        ),
+    )
         os.remove("final.png")
         return await lel.delete()
 
@@ -565,7 +569,7 @@ async def deezer(client: Client, message_: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "DaisyMusic"
+        user.first_name = "coffin"
     usar = user
     wew = usar.id
     try:
@@ -725,7 +729,7 @@ async def jiosaavn(client: Client, message_: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add @Group_Music_Probot to your Group and try again</b>",
+                        "\n\nOr manually add to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
