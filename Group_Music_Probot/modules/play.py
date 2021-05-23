@@ -553,7 +553,7 @@ async def play(_, message: Message):
                 url=url,   
                 song_duration=duration,
                 request_by=message.from_user.mention, 
-                chat_title=chat.title,   
+                chat_title=message.chat.title,   
         ),
     )
         os.remove("final.png")
